@@ -1,0 +1,27 @@
+$ORIGIN .
+$TTL 86400      ; 1 day
+carambola.com.br	IN	SOA	ns1.carambola.com.br. hostmaster.carambola.com.br. (
+			{{serial}}	; YYYYMMDDxx"ano,mes,dia,versao do arquivo"
+			3600		; refresh (1 semana)
+			600			; retry (1 dia)
+			1209600		; expire (4 semanas)
+			3600		; minimum (1 semanas)
+			)
+
+			NS			ns1.carambola.com.br.
+			NS			ns2.carambola.com.br.
+
+			TXT			"v=spf1 a mx -all"
+			SPF			"v=spf1 a mx -all"
+ 
+$ORIGIN		carambola.com.br.
+$TTL		10800		; 3 hours
+
+ns1			A		111.112.25.38
+ns2			A		{{ip-nms-2}}
+
+vm			A		{{ip-vm}}
+nms			A		{{ip-nms}}
+ipam		{{type}}		{{ip-ipam}}
+
+; final

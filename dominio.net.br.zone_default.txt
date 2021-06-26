@@ -1,0 +1,27 @@
+$ORIGIN .
+$TTL 86400      ; 1 day
+{{dominio}}	IN	SOA	ns1.{{dominio}}. hostmaster.{{dominio}}. (
+			{{serial}}	; YYYYMMDDxx"ano,mes,dia,versao do arquivo"
+			3600		; refresh (1 semana)
+			600			; retry (1 dia)
+			1209600		; expire (4 semanas)
+			3600		; minimum (1 semanas)
+			)
+
+			NS			ns1.{{dominio}}.
+			NS			ns2.{{dominio}}.
+
+			TXT			"v=spf1 a mx -all"
+			SPF			"v=spf1 a mx -all"
+ 
+$ORIGIN		{{dominio}}.
+$TTL		10800		; 3 hours
+
+ns1			A		{{bl_01_01}}.{{bl_01_02}}.{{ns13}}.{{ns14}}
+ns2			A		{{ip-nms-2}}
+
+vm			A		{{ip-vm}}
+nms			A		{{ip-nms}}
+ipam		{{type}}		{{ip-ipam}}
+
+; final

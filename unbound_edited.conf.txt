@@ -1,0 +1,38 @@
+//
+// Faça aqui as inserções das zonas reversas e locais
+// Considere adicionar as zonas da rfc1918, se não forem usadas em sua empresa
+//include "/etc/bind/zones.rfc1918";
+
+	// Zonas AUTORITATIVAS Ipv4 e Ipv6
+
+zone "netfiber.inf.br" IN {
+	type master;
+	file "/etc/bind/zones/netfiber.inf.br.zone";
+};
+
+zone "180.237.45.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/180.237.45.rev.db";
+};
+
+zone "45.237.180.20.237.libre.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/45.237.180.20.237.libre.rev.db";
+};
+
+zone "182.237.45.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/182.237.45.rev.db";
+};
+
+zone "183.237.45.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/183.237.45.rev.db";
+};
+
+	// Zonas reversas Ipv6
+
+zone "0.1.3.6.4.0.8.2.ip6.arpa." {
+	type master;
+	file "/etc/bind/reverse/2804-4ecc-.rev.db";
+};

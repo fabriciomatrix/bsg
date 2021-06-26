@@ -1,0 +1,33 @@
+// Zonas AUTORITATIVAS Ipv4 e Ipv6
+
+zone "carambola.com.br" IN {
+	type master;
+	file "/etc/bind/zones/carambola.com.br.zone";
+};
+
+zone "113.112.111.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/113.112.111.rev.db";
+};
+
+zone "224.223.222.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/224.223.222.rev.db";
+};
+
+zone "335.334.333.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/335.334.333.rev.db";
+};
+
+zone "446.445.444.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/446.445.444.rev.db";
+};
+
+	// Zonas reversas Ipv6
+
+zone "0.1.3.6.4.0.8.2.ip6.arpa." {
+	type master;
+	file "/etc/bind/reverse/2804-ff45-.rev.db";
+};

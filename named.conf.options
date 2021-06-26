@@ -1,0 +1,63 @@
+	// ACLs (Access Control Lists)
+	// ACL "clientes" vao ficar os hosts que estao autorizados a fazer
+	// consultas recursivas atraves deste servidor que nao e o foco do bind9.
+
+acl clientes {
+	#localhost;		# Apenas resolver nome para ele proprio
+};
+
+
+#----------------------------------------------------------------------------
+
+	// ACL "tranf-secundarios" serve para os hosts que estao autorizados a receber
+	// transferencias de zona a partir de outros servidores.
+	// Seu servidor Secundario, no caso vou deixar os ips dos dois servidores v4 e v6.
+
+#acl tranf-secundarios {
+	#localhost;
+#};
+
+	// Seu servidor Secundario, v4 e v6.
+
+	#allow-transfer {tranf-secundarios;};
+	#also-notify {tranf-secundarios;};
+
+	// Esta opcao faz com que o servidor secundario ao fazer a transferencia de zonas
+	// primarias deste servidor nao compile o arquivo, assim no outro servidor o arquivo
+	// da zona tera um texto "puro"
+
+	#masterfile-format text;
+
+
+#----------------------------------------------------------------------------
+
+	// O diretorio de trabalho do servidor e /var/cache/bind
+	// Quaisquer caminho nao informado sera tomado como  padrao este directorio
+	// Se houver um firewall nos servidores de nomes que voce deseja configurar
+	// faca a liberacao da porta 53 e consulte o site abaixo para maiores informacoes
+	// link --> http://www.kb.cert.org/vuls/id/800113
+	// Se o seu ISP forneceu um ou mais enderecos IP para o dns estavel 
+	// voce provavelmente podera usa-los como encaminhadores.
+	// Remova o comentario abaixo "//" e insira os enderecos que receber do seu ISP
+	// Geralmente quando configuramos um SERVER DNS nao usamos os forwarders
+	//========================================================================
+	// Se o BIND registar mensagens de erro no log sobre a chave raiz que expirou,
+	// voce precisara atualizar suas chaves no site --> https://www.isc.org/bind-keys
+	//========================================================================
+
+options {
+	directory "/var/cache/bind";
+	dnssec-enable yes;					# Suporte a DNSSEC
+	dnssec-validation auto;				# Suporte a validacao do DNSSEC
+	auth-nxdomain no;					# Conforma a RFC1035 --> https://www.ietf.org/rfc/rfc1035.txt
+	listen-on { any; };					# Respondendo para IPv4 e IPv6
+	listen-on-v6 { any; };				# Porta 53 estara aberta para ambos IPv4 e IPv6
+	allow-recursion { clientes; };		# Especifica quais hosts estao autorizados a fazer consultas
+	allow-query-cache { clientes; };	# Endereco estao autorizados a emitir consultas ao cache local
+	allow-query { any; };				# Especifica quais hosts estao autorizados a fazer perguntas DNS comuns
+	minimal-responses yes;				# Melhora o desempenho do servidor, reduzindo os volumes de dados de saida
+	additional-from-auth no;
+	additional-from-cache no;
+	// Para evitar que vaze a versao do Bind, definimos um nome
+	version "DNS Server";
+};

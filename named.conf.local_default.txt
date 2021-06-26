@@ -1,0 +1,33 @@
+// Zonas AUTORITATIVAS Ipv4 e Ipv6
+
+zone "{{dominio}}" IN {
+	type master;
+	file "/etc/bind/zones/{{dominio}}.zone";
+};
+
+zone "{{bl_01_03}}.{{bl_01_02}}.{{bl_01_01}}.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/{{bl_01_03}}.{{bl_01_02}}.{{bl_01_01}}.rev.db";
+};
+
+zone "{{bl_02_03}}.{{bl_02_02}}.{{bl_02_01}}.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/{{bl_02_03}}.{{bl_02_02}}.{{bl_02_01}}.rev.db";
+};
+
+zone "{{bl_03_03}}.{{bl_03_02}}.{{bl_03_01}}.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/{{bl_03_03}}.{{bl_03_02}}.{{bl_03_01}}.rev.db";
+};
+
+zone "{{xxx3}}.{{xxx2}}.{{xxx1}}.in-addr.arpa" IN {
+	type master;
+	file "/etc/bind/reverse/{{xxx3}}.{{xxx2}}.{{xxx1}}.rev.db";
+};
+
+	// Zonas reversas Ipv6
+
+zone "0.1.3.6.4.0.8.2.ip6.arpa." {
+	type master;
+	file "/etc/bind/reverse/2804-{{bl_ipv6}}-.rev.db";
+};
