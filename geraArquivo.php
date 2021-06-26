@@ -23,6 +23,9 @@ $dominio = $_POST['dominio'];
 $ns13 = $_POST['ns1-3'];
 $ns14 = $_POST['ns1-4'];
 
+$ns23 = $_POST['ns2-3'];
+$ns24 = $_POST['ns2-4'];
+
 //Pega os dados do arquivo
 $dataFile = file_get_contents("named.conf.local_default.txt","r");
 
@@ -60,9 +63,10 @@ $dataFile2 = str_replace("{{bl_01_01}}",$bl_01_01, $dataFile2);
 $dataFile2 = str_replace("{{bl_01_02}}",$bl_01_02, $dataFile2);
 $dataFile2 = str_replace("{{ns13}}",$ns13, $dataFile2);
 $dataFile2 = str_replace("{{ns14}}",$ns14, $dataFile2);
+$dataFile2 = str_replace("{{ns23}}",$ns23, $dataFile2);
+$dataFile2 = str_replace("{{ns24}}",$ns24, $dataFile2);
 
 $dataFile2 = str_replace("{{dominio}}",$dominio, $dataFile2);
-
 
 //Cria um novo arquivo
 $novoArquivo2 = fopen(''.$dominio.'.zone', 'w+');

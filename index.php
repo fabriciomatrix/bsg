@@ -28,6 +28,14 @@
 
             </div><br/>			
 			
+            <div class="ns2Variavel">
+                <label> NS2 </label>
+				<label>xxx.xxx.</label>
+                <input type="text" name="ns2-3" size="5">
+                <input type="text" name="ns2-4" size="5">
+                <label>.</label>				
+
+            </div><br/>	
 
             <div class="primeiraVariavel">
                 <label> Bloco /24 - 01 </label>

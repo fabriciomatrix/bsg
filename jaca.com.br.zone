@@ -1,6 +1,6 @@
 $ORIGIN .
 $TTL 86400      ; 1 day
-{{dominio}}	IN	SOA	ns1.{{dominio}}. hostmaster.{{dominio}}. (
+jaca.com.br	IN	SOA	ns1.jaca.com.br. hostmaster.jaca.com.br. (
 			{{serial}}	; YYYYMMDDxx"ano,mes,dia,versao do arquivo"
 			3600		; refresh (1 semana)
 			600			; retry (1 dia)
@@ -8,17 +8,17 @@ $TTL 86400      ; 1 day
 			3600		; minimum (1 semanas)
 			)
 
-			NS			ns1.{{dominio}}.
-			NS			ns2.{{dominio}}.
+			NS			ns1.jaca.com.br.
+			NS			ns2.jaca.com.br.
 
 			TXT			"v=spf1 a mx -all"
 			SPF			"v=spf1 a mx -all"
  
-$ORIGIN		{{dominio}}.
+$ORIGIN		jaca.com.br.
 $TTL		10800		; 3 hours
 
-ns1			A		{{bl_01_01}}.{{bl_01_02}}.{{ns13}}.{{ns14}}
-ns1			A		{{bl_01_01}}.{{bl_01_02}}.{{ns23}}.{{ns24}}
+ns1			A		111.112.23.38
+ns1			A		111.112.23.39
 
 vm			A		{{ip-vm}}
 nms			A		{{ip-nms}}

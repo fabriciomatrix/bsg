@@ -1,8 +1,8 @@
 // Zonas AUTORITATIVAS Ipv4 e Ipv6
 
-zone "carambola.com.br" IN {
+zone "jaca.com.br" IN {
 	type master;
-	file "/etc/bind/zones/carambola.com.br.zone";
+	file "/etc/bind/zones/jaca.com.br.zone";
 };
 
 zone "113.112.111.in-addr.arpa" IN {
@@ -29,5 +29,5 @@ zone "446.445.444.in-addr.arpa" IN {
 
 zone "0.1.3.6.4.0.8.2.ip6.arpa." {
 	type master;
-	file "/etc/bind/reverse/2804-ff45-.rev.db";
+	file "/etc/bind/reverse/2804-ff43-.rev.db";
 };
